@@ -6,7 +6,7 @@ int KMP(string base, string s);
 
 int main() {
 
-	cout << KMP("aaapple", "apple");
+	cout << KMP("fabcabceabdabcabcdfklabc", "abcd");
 
 	return 0;
 }
@@ -15,7 +15,6 @@ int KMP(string base, string s) {
 	int* p = new int[s.length()];
 	*p = 0;
 	int i = 1, j = 0;
-
 
 	for (; i < s.length();)
 	{
@@ -40,7 +39,8 @@ int KMP(string base, string s) {
 			i++;
 			j++;	
 		}
-		if (j == s.length() - 1) {
+		if (j == s.length()) {
+			cout << "j: " << j << " i: " << i << endl;
 			return i - j;
 		}
 		else if (i < base.length() && s[j] != base[i]) {
@@ -51,8 +51,9 @@ int KMP(string base, string s) {
 				i++;
 			}
 		}
-		
 	}
+
+	
 
 	return -1;	
 }
